@@ -3,6 +3,8 @@ setlocal
 
 cd /d "%~dp0"
 
+if exist "local_settings.bat" call "local_settings.bat"
+
 if not exist ".venv\Scripts\python.exe" (
     echo Creating local virtual environment in "%CD%\.venv"
     py -3.10 -m venv .venv

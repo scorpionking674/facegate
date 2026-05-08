@@ -141,6 +141,10 @@ Example:
 set FACE_COMPARE_CUDA_DLL_DIRS=C:\path\to\torch\lib
 ```
 
+You can also copy `local_settings.example.bat` to `local_settings.bat` and set
+the same value there. `local_settings.bat` is ignored by git and is loaded by
+the setup/run batch files.
+
 ## Report
 
 `comparison_report.csv` contains:

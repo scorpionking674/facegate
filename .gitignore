@@ -8,6 +8,7 @@ claude/
 CLAUDE.md
 .env
 .env.*
+local_settings.bat
 *.log
 *.rar
 *.zip
@@ -22,6 +23,7 @@ failed_comparison/*
 !failed_comparison/.gitkeep
 comparison_report.csv
 
-insightface/models/antelopev2/*.onnx
-insightface/models/antelopev2/*.zip
+insightface/models/antelopev2/*
+!insightface/models/antelopev2/.gitkeep
+!insightface/models/antelopev2/MODEL_FILES.md
 /models/
