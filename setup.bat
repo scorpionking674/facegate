@@ -19,11 +19,9 @@ if not exist ".venv\Scripts\python.exe" (
     exit /b 1
 )
 
-call ".venv\Scripts\activate.bat"
-
-python -m ensurepip --upgrade
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+".venv\Scripts\python.exe" -m ensurepip --upgrade
+".venv\Scripts\python.exe" -m pip install --upgrade pip
+".venv\Scripts\python.exe" -m pip install -r requirements.txt
 if errorlevel 1 (
     echo Dependency install failed.
     pause

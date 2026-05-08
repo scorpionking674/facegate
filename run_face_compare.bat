@@ -8,6 +8,5 @@ if not exist ".venv\Scripts\python.exe" (
     if errorlevel 1 exit /b 1
 )
 
-call ".venv\Scripts\activate.bat"
-python compare_faces.py %*
+".venv\Scripts\python.exe" compare_faces.py %*
 pause
