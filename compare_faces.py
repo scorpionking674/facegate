@@ -11,7 +11,7 @@ from PIL import Image
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
-LOCAL_INSIGHTFACE_ROOT = PROJECT_DIR / "models" / "insightface"
+LOCAL_INSIGHTFACE_ROOT = PROJECT_DIR / "insightface"
 REFERENCE_DIR = PROJECT_DIR / "reference_image"
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff"}
 _DLL_DIRECTORY_HANDLES = []
@@ -71,7 +71,7 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help=(
             "InsightFace root folder containing models\\antelopev2. "
-            "Defaults to this project's models\\insightface folder."
+            "Defaults to this project's insightface folder."
         ),
     )
     parser.add_argument("--det-size", type=int, default=640, help="Detection input size.")

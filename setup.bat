@@ -31,10 +31,10 @@ if errorlevel 1 (
 )
 
 if not exist "reference_image" mkdir "reference_image"
-if not exist "models\insightface\models\antelopev2" mkdir "models\insightface\models\antelopev2"
+if not exist "insightface\models\antelopev2" mkdir "insightface\models\antelopev2"
 
 echo.
 echo Setup complete.
 echo Put reference images in: reference_image
-echo Put antelopev2 ONNX model files in: models\insightface\models\antelopev2
+echo Put antelopev2 ONNX model files in: insightface\models\antelopev2
 pause

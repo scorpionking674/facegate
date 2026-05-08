@@ -22,4 +22,6 @@ failed_comparison/*
 !failed_comparison/.gitkeep
 comparison_report.csv
 
-models/insightface/models/antelopev2/*.onnx
+insightface/models/antelopev2/*.onnx
+insightface/models/antelopev2/*.zip
+/models/

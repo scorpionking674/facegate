@@ -3,7 +3,7 @@
 Place the five `antelopev2` ONNX files in this folder:
 
 ```text
-models/insightface/models/antelopev2/
+insightface/models/antelopev2/
 ```
 
 Expected files:

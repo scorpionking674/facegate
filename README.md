@@ -31,10 +31,9 @@ face-folder-comparison/
   setup.bat
   requirements.txt
   reference_image/
-  models/
-    insightface/
-      models/
-        antelopev2/
+  insightface/
+    models/
+      antelopev2/
   passed_comparison/
   failed_comparison/
 ```
@@ -55,8 +54,11 @@ Python dependencies there. It does not use or modify any ComfyUI environment.
 Put the five `antelopev2` ONNX files here:
 
 ```text
-models\insightface\models\antelopev2
+insightface\models\antelopev2
 ```
+
+The `models\antelopev2` part is required by InsightFace. This project uses
+`insightface` as the model root, so the full path stays compact.
 
 Expected files:
 
