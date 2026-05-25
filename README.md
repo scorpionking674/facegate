@@ -1,7 +1,8 @@
 # FaceGate
 
-Batch sort images by face similarity using InsightFace `antelopev2` and cosine
-distance.
+FaceGate provides a standalone folder-comparison tool and ComfyUI custom nodes
+for filtering generated images by face similarity using InsightFace
+`antelopev2` and cosine distance.
 
 The tool compares every image in a target folder against the reference images
 in `reference_image/`. It uses a best-match decision: a candidate passes if its
@@ -26,6 +27,8 @@ detectable face. Front, three-quarter, and profile face references are useful.
 
 ```text
 face-folder-comparison/
+  __init__.py
+  facegate_comfyui.py
   compare_faces.py
   run_face_compare.bat
   setup.bat
@@ -37,6 +40,89 @@ face-folder-comparison/
   passed_comparison/
   failed_comparison/
 ```
+
+When used as a ComfyUI custom node, clone or copy this repository as:
+
+```text
+ComfyUI/
+  custom_nodes/
+    FaceGate/
+      __init__.py
+      facegate_comfyui.py
+```
+
+## ComfyUI Nodes
+
+Install the Python dependencies into the same Python environment that runs
+ComfyUI:
+
+```bat
+python -m pip install insightface==0.7.3 onnxruntime-gpu numpy pillow
+```
+
+If you use ComfyUI's portable Windows build, run that command with its embedded
+Python executable.
+
+FaceGate uses InsightFace `antelopev2`. The ComfyUI nodes search these model
+locations:
+
+```text
+<model_root input>
+ComfyUI folder_paths.get_folder_paths("insightface")
+<ComfyUI>/models/insightface
+<ComfyUI>/models/insightface/models
+<ComfyUI>/models/insightface/models/antelopev2
+<ComfyUI>/models/insightface/antelopev2
+<ComfyUI>/models
+```
+
+Supported model layouts:
+
+```text
+<model-root>/models/antelopev2/*.onnx
+<ComfyUI>/models/insightface/antelopev2/*.onnx
+```
+
+### FaceGate Filter
+
+Inputs:
+
+```text
+images: IMAGE
+reference_folder: STRING
+threshold: FLOAT
+```
+
+`reference_folder` must be set to your own folder of reference face images. The
+ComfyUI node does not use the standalone `reference_image` folder.
+
+Outputs:
+
+```text
+passed_images: IMAGE
+failed_images: IMAGE
+pass_mask: MASK
+scores: STRING
+debug_images: IMAGE
+pass_mask_image: IMAGE
+```
+
+`scores` is JSON containing distance, similarity, best reference, face count,
+pass/fail reason, and warnings. `pass_mask_image` is a normal black/white image
+version of the pass/fail mask for visual inspection.
+
+### Facegate Save Image
+
+Use `Facegate Save Image` instead of ComfyUI's built-in Save Image when you
+want failed images discarded. If `scores` is not connected, it behaves like
+normal Save Image and saves every image it receives. To let it skip failed
+images, connect `FaceGate Filter.scores` to the optional link-only `scores`
+socket.
+
+`filename_prefix` follows ComfyUI Save Image behavior, including output
+subfolders, counters, `%batch_num%`, and width/height/date tokens supported by
+your ComfyUI version. FaceGate also expands `%date:yyyy-MM-dd%` style date
+tokens before saving.
 
 ## Setup
 
