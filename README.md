@@ -27,8 +27,10 @@ detectable face. Front, three-quarter, and profile face references are useful.
 
 ```text
 face-folder-comparison/
-  __init__.py
-  facegate_comfyui.py
+  custom_nodes/
+    FaceGate/
+      __init__.py
+      facegate_comfyui.py
   compare_faces.py
   run_face_compare.bat
   setup.bat
@@ -41,7 +43,8 @@ face-folder-comparison/
   failed_comparison/
 ```
 
-When used as a ComfyUI custom node, clone or copy this repository as:
+When used as a ComfyUI custom node, copy `custom_nodes/FaceGate` into ComfyUI's
+`custom_nodes` folder:
 
 ```text
 ComfyUI/
