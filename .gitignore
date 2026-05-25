@@ -16,12 +16,14 @@ local_settings.bat
 
 reference_image/*
 !reference_image/.gitkeep
+reference_image_backup/
 
 passed_comparison/*
 !passed_comparison/.gitkeep
 failed_comparison/*
 !failed_comparison/.gitkeep
 comparison_report.csv
+test/
 
 insightface/models/antelopev2/*
 !insightface/models/antelopev2/.gitkeep
